@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: bia_user
+      POSTGRES_PASSWORD: bia_pass
+      POSTGRES_DB: bia_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: tail -f /dev/null  # Para desarrollo interactivo
+
+volumes:
+  pgdata:

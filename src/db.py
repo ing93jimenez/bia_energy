@@ -22,6 +22,8 @@ def init_db():
             latitude FLOAT,
             longitude FLOAT,
             postcode TEXT,
+            country TEXT,
+            admin_area TEXT,                                        
             admin_district TEXT,
             region TEXT,
             quality INT,
